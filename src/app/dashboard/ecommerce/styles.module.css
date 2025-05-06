@@ -1,0 +1,14 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.welcomeCard {
+  grid-column: span 8;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.summaryCards {
+  grid-column: span 4;
+  grid-template-columns: repeat(4, 1fr);
+}

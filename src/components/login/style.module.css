@@ -1,0 +1,81 @@
+.bg_login {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.left_login {
+  display: none;
+  padding: 0px 20px;
+  width: 100%;
+  height: 100vh;
+  background-color: #ecf2ff;
+}
+
+@media (min-width: 1200px) {
+  .left_login {
+    display: flex;
+    grid-column: span 8;
+    grid-template-columns: repeat(8, 1fr);
+    justify-content: center;
+  }
+}
+
+.left_icon {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .left_icon {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/*  */
+
+.right_login {
+  grid-column: span 12;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+@media (min-width: 1200px) {
+  .right_login {
+    grid-column: span 4;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.right_login_box {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .right_login_box {
+    max-width: 500px;
+  }
+}
+
+.btn_social_login {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .btn_social_login {
+    width: 80%;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
+}
+
+.btn_social {
+  width: 48%;
+  border: 1px solid #0000003b;
+}

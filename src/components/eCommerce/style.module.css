@@ -1,0 +1,98 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.welcome {
+  grid-column: span 12;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+@media (max-width: 1200px) {
+  .welcome {
+    grid-column: span 12;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.welcome_sec1 {
+  grid-column: span 8;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+@media (max-width: 768px) {
+  .welcome_sec1 {
+    grid-column: span 12;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.welcome_sec2 {
+  grid-column: span 4;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .welcome_sec2 {
+    display: none;
+  }
+}
+
+.summary {
+  grid-column: span 12;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.expense {
+  grid-column: span 6;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+@media (max-width: 768px) {
+  .expense {
+    grid-column: span 12;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.sales {
+  grid-column: span 6;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+@media (max-width: 768px) {
+  .sales {
+    grid-column: span 12;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+/*  */
+
+.transactions {
+  grid-column: span 4;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1200px) {
+  .transactions {
+    grid-column: span 12;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.Product {
+  grid-column: span 8;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+@media (max-width: 1200px) {
+  .Product {
+    grid-column: span 12;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
