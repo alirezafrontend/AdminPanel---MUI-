@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./style.module.css";
 import {
@@ -16,6 +16,8 @@ import {
   Stack,
   Link,
   useMediaQuery,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -24,14 +26,39 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [openToast, setOpenToast] = useState(false);
+  const [isAdminChecked, setIsAdminChecked] = useState(false);
   const router = useRouter();
   const isSmallScreen = useMediaQuery("(max-width:768px)");
+
+  useEffect(() => {
+    setOpenToast(true);
+  }, []);
 
   const handleLogin = () => {
     if (username === "adminPanel" && password === "admin") {
       router.push("/dashboard");
     } else {
       setError("Username or password is incorrect");
+    }
+  };
+
+  const handleCloseToast = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenToast(false);
+  };
+
+  const handleAdminCheckboxChange = (event) => {
+    const checked = event.target.checked;
+    setIsAdminChecked(checked);
+    if (checked) {
+      setUsername("adminPanel");
+      setPassword("admin");
+    } else {
+      setUsername("");
+      setPassword("");
     }
   };
 
@@ -182,6 +209,8 @@ export default function Login() {
               <FormControlLabel
                 control={
                   <Checkbox
+                    checked={isAdminChecked}
+                    onChange={handleAdminCheckboxChange}
                     sx={{
                       color: "#0000003b",
                       "&.Mui-checked": {
@@ -193,7 +222,7 @@ export default function Login() {
                     }}
                   />
                 }
-                label="Remember this Device"
+                label="Are you an admin?"
               />
             </Stack>
           </Stack>
@@ -228,6 +257,32 @@ export default function Login() {
           </Stack>
         </Box>
       </Grid>
+
+      <Snackbar
+        open={openToast}
+        onClose={(event, reason) => {
+          if (reason === "clickaway") {
+            return;
+          }
+          setOpenToast(false);
+        }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        disableWindowBlurListener
+      >
+        <Alert
+          onClose={handleCloseToast}
+          severity="info"
+          sx={{
+            width: "100%",
+            fontSize: "1rem",
+            p: "20px",
+            bgcolor: "#d6e3ff",
+          }}
+        >
+          <Typography>Username: adminPanel</Typography>
+          <Typography>Password: admin</Typography>
+        </Alert>
+      </Snackbar>
     </Grid>
   );
 }
